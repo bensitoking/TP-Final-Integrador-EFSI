@@ -24,7 +24,7 @@ function Listado() {
     <section>
       <h2 className="text-lg font-semibold mb-3">Listado de Movimientos</h2>
       {movimientos.length === 0 ? (
-        <p>No hay movimientos registrados.</p>
+        <p>No hay movimientos registrados....</p>
       ) : (
         <ul className="space-y-2">
           {movimientos.map((mov) => (
