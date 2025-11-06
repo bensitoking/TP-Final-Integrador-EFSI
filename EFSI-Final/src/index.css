@@ -1,15 +1,207 @@
+/* === VARIABLES DE COLOR === */
+:root {
+  --color-fondo-claro: #f8fafc;
+  --color-fondo-oscuro: #1e293b;
+  --color-primario: #14b8a6;
+  --color-secundario: #6366f1;
+  --color-texto: #1e293b;
+  --color-texto-claro: #f1f5f9;
+  --color-borde: #cbd5e1;
+  --color-card: #ffffff;
+  --transicion: all 0.3s ease-in-out;
+}
+
+/* === ESTILOS GENERALES === */
 body {
-  font-family: system-ui, sans-serif;
-  margin: 0;
-  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--color-fondo-claro);
+  color: var(--color-texto);
+  transition: var(--transicion);
+  line-height: 1.6;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+.dark body {
+  background-color: var(--color-fondo-oscuro);
+  color: var(--color-texto-claro);
 }
 
-.dark {
-  background-color: #1f2937;
+/* === LAYOUT PRINCIPAL === */
+header {
+  background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
   color: white;
+  padding: 1.2rem 2rem;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 1px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+/* === BOTONES === */
+button,
+a.btn {
+  background-color: var(--color-primario);
+  color: white;
+  border: none;
+  border-radius: 0.8rem;
+  padding: 0.7rem 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: var(--transicion);
+  cursor: pointer;
+}
+
+button:hover,
+a.btn:hover {
+  background-color: var(--color-secundario);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(99, 102, 241, 0.2);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* === TARJETAS Y TABLAS === */
+.card {
+  background-color: var(--color-card);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  transition: var(--transicion);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* === TABLA DE MOVIMIENTOS === */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: var(--color-card);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+thead {
+  background-color: var(--color-secundario);
+  color: white;
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+tbody tr {
+  transition: var(--transicion);
+}
+
+tbody tr:hover {
+  background-color: rgba(99, 102, 241, 0.05);
+  transform: scale(1.01);
+}
+
+/* === FILTROS E INPUTS === */
+input,
+select {
+  border: 1px solid var(--color-borde);
+  border-radius: 0.6rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.95rem;
+  width: 100%;
+  background-color: #fff;
+  transition: var(--transicion);
+}
+
+input:focus,
+select:focus {
+  border-color: var(--color-secundario);
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.3);
+  outline: none;
+  transform: scale(1.02);
+}
+
+/* === ANIMACIONES === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+/* === LINKS === */
+a {
+  color: var(--color-secundario);
+  text-decoration: none;
+  transition: var(--transicion);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* === MODO OSCURO === */
+.dark {
+  --color-fondo-claro: #0f172a;
+  --color-card: #1e293b;
+  --color-texto: #e2e8f0;
+  --color-borde: #334155;
+}
+
+.dark table {
+  background-color: var(--color-card);
+  color: var(--color-texto);
+}
+
+.dark thead {
+  background-color: var(--color-primario);
+}
+
+/* === PIE DE PÁGINA === */
+footer {
+  text-align: center;
+  padding: 1rem;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+/* === ANIMACIONES DE ENTRADA GLOBAL === */
+.fade {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* === BOTÓN DE MODO OSCURO === */
+.toggle-dark {
+  background: transparent;
+  border: 2px solid var(--color-secundario);
+  color: var(--color-secundario);
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: var(--transicion);
+}
+
+.toggle-dark:hover {
+  background: var(--color-secundario);
+  color: white;
+  transform: scale(1.05);
 }

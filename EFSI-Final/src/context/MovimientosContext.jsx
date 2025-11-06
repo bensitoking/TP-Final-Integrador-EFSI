@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
-const MovimientosContext = createContext();
+export const MovimientosContext = createContext(); // 👈 Export directo aquí
 
 export const MovimientosProvider = ({ children }) => {
   const [movimientos, setMovimientos] = useLocalStorage("movimientos", []);
