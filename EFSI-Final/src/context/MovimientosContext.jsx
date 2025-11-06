@@ -20,9 +20,19 @@ export const MovimientosProvider = ({ children }) => {
     setMovimientos(movimientos.filter((m) => m.id !== id));
   };
 
+  const limpiarMovimientos = () => {
+    setMovimientos([]);
+  };
+
   return (
     <MovimientosContext.Provider
-      value={{ movimientos, agregarMovimiento, editarMovimiento, eliminarMovimiento }}
+      value={{
+        movimientos,
+        agregarMovimiento,
+        editarMovimiento,
+        eliminarMovimiento,
+        limpiarMovimientos,
+      }}
     >
       {children}
     </MovimientosContext.Provider>
