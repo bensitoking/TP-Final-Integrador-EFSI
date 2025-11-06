@@ -10,11 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.21",
     "formik": "^2.4.6",
+    "install": "^0.13.0",
+    "postcss": "^8.5.6",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.5",
     "recharts": "^3.3.0",
+<<<<<<< HEAD
+=======
+    "tailwindcss": "^4.1.16",
+>>>>>>> ben
     "yup": "^1.7.1"
   },
   "devDependencies": {

@@ -1,7 +1,7 @@
 import { createContext, useContext } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
-const MovimientosContext = createContext();
+export const MovimientosContext = createContext(); // 👈 Export directo aquí
 
 export const MovimientosProvider = ({ children }) => {
   const [movimientos, setMovimientos] = useLocalStorage("movimientos", []);
@@ -20,9 +20,19 @@ export const MovimientosProvider = ({ children }) => {
     setMovimientos(movimientos.filter((m) => m.id !== id));
   };
 
+  const limpiarMovimientos = () => {
+    setMovimientos([]);
+  };
+
   return (
     <MovimientosContext.Provider
-      value={{ movimientos, agregarMovimiento, editarMovimiento, eliminarMovimiento }}
+      value={{
+        movimientos,
+        agregarMovimiento,
+        editarMovimiento,
+        eliminarMovimiento,
+        limpiarMovimientos,
+      }}
     >
       {children}
     </MovimientosContext.Provider>
