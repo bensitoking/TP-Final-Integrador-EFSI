@@ -17,95 +17,119 @@ export default function Nuevo() {
   const { agregarMovimiento } = useMovimientos();
   const navigate = useNavigate();
 
+  const categorias = [
+    "Alimentación",
+    "Transporte",
+    "Ocio",
+    "Trabajo",
+    "Vivienda",
+    "Otros"
+  ];
+
   return (
-    <section>
-      <h2 className="text-lg font-semibold mb-3">Nuevo Movimiento</h2>
+    <div className="form-section">
+      <div className="card">
+        <div className="card-header">
+          <h2 className="card-title">Nuevo Movimiento</h2>
+        </div>
+        <div className="card-body">
+          <Formik
+            initialValues={{
+              descripcion: "",
+              categoria: "",
+              tipo: "",
+              monto: "",
+              fecha: "",
+            }}
+            validationSchema={esquema}
+            onSubmit={(values) => {
+              agregarMovimiento(values);
+              navigate("/");
+            }}
+          >
+            {() => (
+              <Form className="form-grid">
+                <div className="form-group">
+                  <label className="form-label">Descripción</label>
+                  <Field name="descripcion" className="form-control" placeholder="Ingrese la descripción" />
+                  <ErrorMessage
+                    name="descripcion"
+                    component="div"
+                    className="form-error"
+                  />
+                </div>
 
-      <Formik
-        initialValues={{
-          descripcion: "",
-          categoria: "",
-          tipo: "",
-          monto: "",
-          fecha: "",
-        }}
-        validationSchema={esquema}
-        onSubmit={(values) => {
-          agregarMovimiento(values);
-          navigate("/");
-        }}
-      >
-        {() => (
-          <Form className="space-y-3 max-w-sm">
-            <div>
-              <label>Descripción</label>
-              <Field name="descripcion" className="border p-1 w-full rounded" />
-              <ErrorMessage
-                name="descripcion"
-                component="div"
-                className="text-red-500 text-sm"
-              />
-            </div>
+                <div className="form-group">
+                  <label className="form-label">Categoría</label>
+                  <Field as="select" name="categoria" className="form-control">
+                    <option value="">Seleccionar...</option>
+                    {categorias.map((categoria) => (
+                      <option key={categoria} value={categoria}>
+                        {categoria}
+                      </option>
+                    ))}
+                  </Field>
+                  <ErrorMessage
+                    name="categoria"
+                    component="div"
+                    className="form-error"
+                  />
+                </div>
 
-            <div>
-              <label>Categoría</label>
-              <Field as="select" name="categoria" className="border p-1 w-full rounded">
-                <option value="">Seleccionar...</option>
-                <option value="Alimentación">Alimentación</option>
-                <option value="Transporte">Transporte</option>
-                <option value="Ocio">Ocio</option>
-                <option value="Trabajo">Trabajo</option>
-              </Field>
-              <ErrorMessage
-                name="categoria"
-                component="div"
-                className="text-red-500 text-sm"
-              />
-            </div>
+                <div className="form-group">
+                  <label className="form-label">Tipo</label>
+                  <Field as="select" name="tipo" className="form-control">
+                    <option value="">Seleccionar...</option>
+                    <option value="ingreso">Ingreso</option>
+                    <option value="gasto">Gasto</option>
+                  </Field>
+                  <ErrorMessage
+                    name="tipo"
+                    component="div"
+                    className="form-error"
+                  />
+                </div>
 
-            <div>
-              <label>Tipo</label>
-              <Field as="select" name="tipo" className="border p-1 w-full rounded">
-                <option value="">Seleccionar...</option>
-                <option value="ingreso">Ingreso</option>
-                <option value="gasto">Gasto</option>
-              </Field>
-              <ErrorMessage
-                name="tipo"
-                component="div"
-                className="text-red-500 text-sm"
-              />
-            </div>
+                <div className="form-group">
+                  <label className="form-label">Monto (€)</label>
+                  <Field type="number" name="monto" className="form-control" placeholder="0.00" />
+                  <ErrorMessage
+                    name="monto"
+                    component="div"
+                    className="form-error"
+                  />
+                </div>
 
-            <div>
-              <label>Monto (€)</label>
-              <Field type="number" name="monto" className="border p-1 w-full rounded" />
-              <ErrorMessage
-                name="monto"
-                component="div"
-                className="text-red-500 text-sm"
-              />
-            </div>
+                <div className="form-group">
+                  <label className="form-label">Fecha</label>
+                  <Field type="date" name="fecha" className="form-control" />
+                  <ErrorMessage
+                    name="fecha"
+                    component="div"
+                    className="form-error"
+                  />
+                </div>
 
-            <div>
-              <label>Fecha</label>
-              <Field type="date" name="fecha" className="border p-1 w-full rounded" />
-              <ErrorMessage
-                name="fecha"
-                component="div"
-                className="text-red-500 text-sm"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="bg-blue-600 text-white px-4 py-2 rounded"
-            >
-              Guardar
-            </button>
-          </Form>
-        )}
-      </Formik>
-    </section>
+                <div className="form-actions">
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                  >
+                    Guardar Movimiento
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => navigate("/")}
+                    className="btn btn-secondary"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </Form>
+            )}
+          </Formik>
+        </div>
+      </div>
+    </div>
   );
 }

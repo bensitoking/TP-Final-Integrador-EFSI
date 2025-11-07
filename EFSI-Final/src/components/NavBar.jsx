@@ -1,14 +1,22 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-function NavBar() {
+export default function NavBar() {
   return (
-    <nav className="flex justify-center gap-4 bg-blue-100 dark:bg-gray-700 py-2">
-      <Link to="/">Listado</Link>
-      <Link to="/nuevo">Nuevo</Link>
-      <Link to="/resumen">Resumen</Link>
-      <Link to="/ajustes">Ajustes</Link>
+    <nav className="app-nav">
+      <div className="nav-content">
+        <NavLink to="/" className="nav-link">
+          Listado
+        </NavLink>
+        <NavLink to="/nuevo" className="nav-link">
+          Nuevo
+        </NavLink>
+        <NavLink to="/resumen" className="nav-link">
+          Resumen
+        </NavLink>
+        <NavLink to="/ajustes" className="nav-link">
+          Ajustes
+        </NavLink>
+      </div>
     </nav>
   );
 }
-
-export default NavBar;

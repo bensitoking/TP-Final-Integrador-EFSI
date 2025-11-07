@@ -6,6 +6,7 @@ import Nuevo from "./pages/Nuevo";
 import Resumen from "./pages/Resumen";
 import Ajustes from "./pages/Ajustes";
 import { useTheme } from "./context/ThemeContext";
+import './App.css';
 import Editar from "./pages/Editar";
 
 function App() {
@@ -13,17 +14,19 @@ function App() {
 
   return (
     <div className={theme === "dark" ? "dark" : ""}>
-      <div className="min-h-screen bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white">
+      <div className="app-container">
         <Header />
         <NavBar />
-        <main className="p-4">
-          <Routes>
+        <main className="app-main">
+          <div className="main-container">
+            <Routes>
               <Route path="/" element={<Listado />} />
               <Route path="/nuevo" element={<Nuevo />} />
               <Route path="/editar/:id" element={<Editar />} />
               <Route path="/resumen" element={<Resumen />} />
               <Route path="/ajustes" element={<Ajustes />} />
-          </Routes>
+            </Routes>
+          </div>
         </main>
       </div>
     </div>

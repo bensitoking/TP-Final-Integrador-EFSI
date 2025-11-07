@@ -16,12 +16,8 @@
     "postcss": "^8.5.6",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-router-dom": "^7.9.5",
+    "react-router-dom": "^6.4.0",
     "recharts": "^3.3.0",
-<<<<<<< HEAD
-=======
-    "tailwindcss": "^4.1.16",
->>>>>>> ben
     "yup": "^1.7.1"
   },
   "devDependencies": {

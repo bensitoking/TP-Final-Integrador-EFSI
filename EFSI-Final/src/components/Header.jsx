@@ -1,19 +1,13 @@
 import { useTheme } from "../context/ThemeContext";
 
-function Header() {
+export default function Header() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <header className="flex justify-between items-center p-4 bg-blue-600 text-white">
-      <h1 className="text-xl font-bold">Mi Presupuesto</h1>
-      <button
-        onClick={toggleTheme}
-        className="bg-white text-blue-600 px-3 py-1 rounded-md"
-      >
-        {theme === "light" ? "Modo Oscuro" : "Modo Claro"}
-      </button>
+    <header className="app-header">
+      <div className="header-content">
+        <h1 className="app-title">Mí Presupuesto</h1>
+      </div>
     </header>
   );
 }
-
-export default Header;

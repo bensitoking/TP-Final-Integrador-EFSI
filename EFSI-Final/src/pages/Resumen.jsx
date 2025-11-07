@@ -27,7 +27,6 @@ export default function Resumen() {
     .reduce((acc, m) => acc + Number(m.monto), 0);
   const balance = totalIngresos - totalGastos;
 
-  // --- Datos para el gráfico circular ---
   const gastosPorCategoria = movimientos
     .filter((m) => m.tipo === "gasto")
     .reduce((acc, mov) => {
@@ -42,7 +41,6 @@ export default function Resumen() {
 
   const COLORS = ["#0088FE", "#FF8042", "#00C49F", "#FFBB28"];
 
-  // --- Datos para gráfico de barras (evolución mensual) ---
   const dataPorMes = movimientos.reduce((acc, mov) => {
     const mes = new Date(mov.fecha).toLocaleString("es-ES", { month: "short" });
     const existente = acc.find((a) => a.mes === mes);
@@ -79,7 +77,6 @@ export default function Resumen() {
         </div>
       </div>
 
-      {/* Gráfico circular */}
       <div>
         <h3 className="font-semibold mb-2">Distribución de gastos por categoría</h3>
         <ResponsiveContainer width="100%" height={300}>
@@ -101,7 +98,6 @@ export default function Resumen() {
         </ResponsiveContainer>
       </div>
 
-      {/* Gráfico de barras */}
       <div>
         <h3 className="font-semibold mb-2">Evolución mensual</h3>
         <ResponsiveContainer width="100%" height={300}>
